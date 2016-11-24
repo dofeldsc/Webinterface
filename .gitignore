@@ -1,0 +1,11 @@
+Altis_Life.Altis.pbo
+a3_infiSTAR.pbo
+life_server.pbo
+Altis_Life_test.Altis.pbo
+DE100_Life.Altis.pbo
+DE100_Life_*
+.idea/
+*.bak
+*.sublime-project
+*.pbo
+.dev/
