@@ -2,12 +2,12 @@
 if (isset($registration)) {
     if ($registration->errors) {
         foreach ($registration->errors as $error) {
-            message($error);
+            message($error, "danger");
         }
     }
     if ($registration->messages) {
         foreach ($registration->messages as $message) {
-            message($message);
+            message($message, "success");
         }
     }
 }

@@ -29,7 +29,7 @@ if (isset($_POST["editType"])) {
                 $update = "UPDATE `players` SET civ_gear = '" . $civ_gear_value . "' WHERE `uid` = '" . $uID . "' ";
                 $result_of_query = $db_link->query($update);
                 logAction($_SESSION['user_name'], $lang['edited'] . ' ' . nameID($player->playerid, $db_link) . '(' . $player->playerid . ') ' . $lang['civ'] . ' ' . $lang['inventory'], 1);
-                message($lang['edited'] . ' ' . $lang['civ'] . ' ' . $lang['inventory']);
+                message($lang['edited'] . ' ' . $lang['civ'] . ' ' . $lang['inventory'], "info");
                 break;
 
             case "cop_inv":
@@ -37,7 +37,7 @@ if (isset($_POST["editType"])) {
                 $update = "UPDATE `players` SET cop_gear = '" . $cop_gear_value . "' WHERE `uid` = '" . $uID . "' ";
                 $result_of_query = $db_link->query($update);
                 logAction($_SESSION['user_name'], $lang['edited'] . ' ' . nameID($player->playerid, $db_link) . '(' . $player->playerid . ') ' . $lang['cop'] . ' ' . $lang['inventory'], 1);
-                message($lang['edited'] . ' ' . $lang['cop'] . ' ' . $lang['inventory']);
+                message($lang['edited'] . ' ' . $lang['cop'] . ' ' . $lang['inventory'], "info");
                 break;
 
             case "med_inv":
@@ -45,7 +45,7 @@ if (isset($_POST["editType"])) {
                 $update = "UPDATE `players` SET med_gear = '" . $med_gear_value . "' WHERE `uid` = '" . $uID . "' ";
                 $result_of_query = $db_link->query($update);
                 logAction($_SESSION['user_name'], $lang['edited'] . ' ' . nameID($player->playerid, $db_link) . '(' . $player->playerid . ') ' . $lang['medic'] . ' ' . $lang['inventory'], 1);
-                message($lang['edited'] . ' ' . $lang['medic'] . ' ' . $lang['inventory']);
+                message($lang['edited'] . ' ' . $lang['medic'] . ' ' . $lang['inventory'], "info");
                 break;
 
             case "player_edit":
@@ -70,11 +70,11 @@ if (isset($_POST["editType"])) {
                         if ($cash != $player->cash) logAction($_SESSION['user_name'], $lang['edited'] . " " . nameID($player->playerid, $db_link) . "(" . $player->playerid . ") " . $lang['cash'] . " " . $lang['from'] . " (" . $player->cash . ") " . $lang['to'] . " (" . $cash . ")", 2);
                         if ($bankacc != $player->bankacc) logAction($_SESSION['user_name'], $lang['edited'] . " " . nameID($player->playerid, $db_link) . "(" . $player->playerid . ") " . $lang['bank'] . " " . $lang['from'] . " (" . $player->bankacc . ") " . $lang['to'] . " (" . $bankacc . ")", 2);
 
-                        $update = "UPDATE `players` SET coplevel = '" . $coplevel . "', mediclevel = '" . $mediclevel . "', donorlevel = '" . $donorlevel . "', adminlevel = '" . $adminlevel . "', cash = '" . $cash . "', bankacc = '" . $bankacc . "', arrested = '" . $arrested . "', blacklist = '" . $blacklist . "' WHERE `uid` = '" . $uID . "' ";
+                        $update = "UPDATE players SET coplevel = '" . $coplevel . "', mediclevel = '" . $mediclevel . "', adminlevel = '" . $adminlevel . "', cash = '" . $cash . "', bankacc = '" . $bankacc . "', arrested = '" . $arrested . "', blacklist = '" . $blacklist . "' WHERE `uid` = '" . $uID . "' ";
                         $result_of_query = $db_link->query($update);
-                        message($lang['edited'] . ' ' . nameID($player->playerid, $db_link));
+                        message($lang['edited'] . ' ' . nameID($player->playerid, $db_link), "info");
                     } else {
-                        message("ERROR");
+                        message("ERROR", "danger");
                     }
                 } elseif ($_SESSION['user_level'] >= 3) {
                     $coplevel = intval($_POST["player_coplvl"]);
@@ -97,9 +97,9 @@ if (isset($_POST["editType"])) {
                         $update = "UPDATE `players` SET coplevel = '" . $coplevel . "', mediclevel = '" . $mediclevel . "', donorlevel = '" . $donorlevel . "', cash = '" . $cash . "', bankacc = '" . $bankacc . "', arrested = '" . $arrested . "' WHERE `uid` = '" . $uID . "' ";
                         $result_of_query = $db_link->query($update);
                         logAction($_SESSION['user_name'], $lang['edited'] . ' ' . nameID($player->playerid, $db_link) . '(' . $player->playerid . ') ' . $lang['levels'], 2);
-                        message($lang['edited'] . ' ' . nameID($player->playerid, $db_link));
+                        message($lang['edited'] . ' ' . nameID($player->playerid, $db_link), "info");
                     } else {
-                        message("ERROR");
+                        message("ERROR", "danger");
                     }
                 } elseif ($_SESSION['user_level'] >= 2) {
                     $coplevel = intval($_POST["player_coplvl"]);
@@ -110,7 +110,7 @@ if (isset($_POST["editType"])) {
                     $update = "UPDATE `players` SET coplevel = '" . $coplevel . "', mediclevel = '" . $mediclevel . "' WHERE `uid` = '" . $uID . "' ";
                     $result_of_query = $db_link->query($update);
                     logAction($_SESSION['user_name'], $lang['edited'] . ' ' . nameID($player->playerid, $db_link) . '(' . $player->playerid . ') ' . $lang['levels'], 2);
-                    message($lang['edited'] . ' ' . nameID($player->playerid, $db_link));
+                    message($lang['edited'] . ' ' . nameID($player->playerid, $db_link), "info");
                 }
                 break;
             case "add_note":
@@ -118,11 +118,11 @@ if (isset($_POST["editType"])) {
                 $update = "INSERT INTO `notes` (`uid`, `staff_name`, `note_text`, `note_updated`) VALUES ('" . $uID . "', '" . $_SESSION['user_name'] . "', '" . $note_text . "', CURRENT_TIMESTAMP); ";
                 $result_of_query = $db_link->query($update);
                 logAction($_SESSION['user_name'], $lang['edited'] . ' ' . nameID($player->playerid, $db_link) . '(' . $player->playerid . ') ' . $lang['notes'], 1);
-                message($lang['edited'] . ' ' . $lang['notes']);
+                message($lang['edited'] . ' ' . $lang['notes'], "info");
                 break;
         }
     } else {
-        message($lang['expired']);
+        message($lang['expired'], "danger");
     }
     }
 
@@ -168,9 +168,9 @@ if ($result->num_rows > 0) {
                 echo "<h4 style='word-wrap: break-word;'>" . $lang['GUID'] . ": " . $pGID . "</h4>";
             ?>
             <i class="fa fa-2x fa-money"></i>
-            <h4><?php echo $lang['cash'] . ": " . $player->cash; ?> </h4>
+            <h4><?php echo $lang['cash'] . ": $" . number_format($player->cash,0, ",", "."); ?> </h4>
             <i class="fa fa-2x fa-bank"></i>
-            <h4> <?php echo $lang['bank'] . ": " . $player->bankacc; ?> </h4>
+            <h4> <?php echo $lang['bank'] . ": $" . number_format($player->bankacc,0, ",", "."); ?> </h4>
             <?php
                 if ($player->arrested == 0) {
                     echo "<h4><button type='button' id='arrested' class='arrest btn btn-xs btn-success'>" . $lang["not"] . " " . $lang["arrested"] . "</button></h4>";
@@ -406,7 +406,7 @@ if ($result->num_rows > 0) {
                                     <?php
                                     while ($row = mysqli_fetch_assoc($result_of_query)) {
                                         echo "<tr>";
-                                        echo "<td>" . substr($row["pos"], 1, -1) . "</td>";
+                                        echo "<td>" . $row["pos"] . "</td>";
                                         echo "<td><a class='btn btn-primary btn-xs' href='" . $settings['url'] . "editHouse/" . $row["id"] . "'>";
                                         echo "<i class='fa fa-pencil'></i></a></td>";
                                         echo "</tr>";
@@ -546,9 +546,8 @@ if ($result->num_rows > 0) {
                 </h4>
             </div>
             <?php if ($_SESSION['permissions']['edit']['inventory']) { ?>
-                <form method="post" action="<?php echo $settings['url'] . 'editPlayer/' . $uID; ?>"
+                <form method="post" role="form" action="<?php echo $settings['url'] . 'editPlayer/' . $uID; ?>">
                 <?php echo formtoken::getField() ?>
-                      role="form">
                     <div class="modal-body">
                         <div class="form-group">
                             <input type="hidden" name="editType" value="civ_inv"/>
@@ -579,9 +578,8 @@ if ($result->num_rows > 0) {
                 </h4>
             </div>
             <?php if ($_SESSION['permissions']['edit']['inventory']) { ?>
-                <form method="post" action="<?php echo $settings['url'] . 'editPlayer/' . $uID; ?>"
+                <form method="post" action="<?php echo $settings['url'] . 'editPlayer/' . $uID; ?>" role="form">
                 <?php echo formtoken::getField() ?>
-                      role="form">
                     <div class="modal-body">
                         <div class="form-group">
                             <input type="hidden" name="editType" value="med_inv"/>
@@ -612,7 +610,7 @@ if ($result->num_rows > 0) {
                 </h4>
             </div>
             <?php if ($_SESSION['permissions']['edit']['inventory']) { ?>
-                <form method="post" action="<?php echo $settings['url'] . 'editPlayer/' . $uID; ?>"
+                <form method="post" action="<?php echo $settings['url'] . 'editPlayer/' . $uID; ?>" 
                       role="form">
                     <?php echo formtoken::getField() ?>
                     <div class="modal-body">

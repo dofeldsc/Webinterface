@@ -36,7 +36,7 @@ if (isset($_POST['db_host'])) {
             logAction($_SESSION['user_name'], $lang['failedUpdate'] . ' ' . $lang['server'] . ' ' . $lang['settings'], 3);
         }
     } else {
-        message($lang['expired']);
+        message($lang['expired','danger']);
     }
 }
 ?>

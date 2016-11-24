@@ -8,7 +8,7 @@ if (isset($_POST['email'])) {
         $sql = "UPDATE `users` SET `user_email`= '" . $email . "',`playerid`= '" . $pId . "', `user_profile`= '" . $user_pic . "'WHERE `user_id` = '" . $_SESSION['user_id'] . "' ";
         $result_of_query = $db_connection->query($sql);
     } else {
-        message($lang['expired']);
+        message($lang['expired'], "danger");
     }
 }
 if (isset($_POST['user_password'])) {
@@ -18,10 +18,10 @@ if (isset($_POST['user_password'])) {
         if ($_POST['user_password'] == $_POST['user_password_again'] && password_verify($_POST['current_password'],$result->user_password_hash)) {
             $sql = "UPDATE `users` SET `user_password_hash`= '" . password_hash($_POST['user_password'], PASSWORD_DEFAULT) . "' WHERE `user_id` = '" . $_SESSION['user_id'] . "';";
             $result_of_query = $db_connection->query($sql);
-            message($lang['passChanged']);
+            message($lang['passChanged'], "info");
         }
     } else {
-        message($lang['expired']);
+        message($lang['expired'], "danger");
     }
 }
 

@@ -35,13 +35,13 @@ if (isset($_POST["editType"])) {
                     $gMem = clean($_POST["gMem"], 'string');
                     $sql = "UPDATE `gangs` SET `members`='" . $gMem . "' WHERE `gangs`.`id` = '" . $gID . "'";
                     $result_of_query = $db_link->query($sql);
-                    message($lang['updated']);
+                    message($lang['updated', "info"]);
                     break;
 
                 case "del_gang":
                     $sql = "DELETE FROM `gangs` WHERE `gangs`.`id` = '" . $gID . "'";
                     $result_of_query = $db_link->query($sql);
-                    message($lang['updated']);
+                    message($lang['updated', "info"]);
                     break;
 
                 case "gang_edit":
@@ -52,12 +52,12 @@ if (isset($_POST["editType"])) {
                     $gAct = clean($_POST["gAct"], 'int');
                     $sql = "UPDATE `gangs` SET `owner`='" . $gowner . "',`name`='" . $gname . "',`maxmembers`='" . $gMM . "',`bank`='" . $gbank . "',`active`='" . $gAct . "' WHERE `gangs`.`id` = '" . $gID . "'";
                     $result_of_query = $db_link->query($sql);
-                    message($lang['updated']);
+                    message($lang['updated', "info"]);
                     break;
             }
         }
     } else {
-        message($lang['expired']);
+        message($lang['expired'], "danger");
     }
     }
 

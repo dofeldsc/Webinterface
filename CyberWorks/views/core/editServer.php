@@ -32,7 +32,7 @@ elseif (isset($_POST['edit'])) {
                     $sql = "UPDATE `servers` SET `name`= '" . $name . "',`type`= '" . $type . "',`use_sq`= '" . $usegsq . "' WHERE `dbid`='" . $id . "';";
                 }
                 $result_of_query = $db_connection->query($sql);
-            } else message($lang['expired']);
+            } else message($lang['expired'],'error');
         } else logAction($_SESSION['user_name'], $lang['failedUpdate'] . ' ' . $lang['gsq'], 3);
     }
 }

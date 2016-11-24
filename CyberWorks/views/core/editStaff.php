@@ -27,8 +27,8 @@ if ($result_of_query->num_rows > 0) {
 			if ($user->playerid != $_POST['staffPID']) logAction($_SESSION['user_name'], $lang['edited'] . " " . $_POST['staffName'] . "\'s " . $lang['player'] . " " . $lang['id'] . " " . $lang['from'] . " (" . $user->playerid . ") " . $lang['to'] . " (" . $_POST['staffPID'] . ")", 2);
 			if ($user->user_email != $_POST['staffEmail']) logAction($_SESSION['user_name'], $lang['edited'] . " " . $user->user_name . "\'s " . strtolower($lang['email']) . " " . $lang['from'] . " (" . $user->user_email . ") " . $lang['to'] . " (" . $_POST['staffEmail'] . ")", 2);
 			
-            message(ucfirst($_POST['staffName']) . ' ' . $lang['updated']);
-        } else message($lang['expired']);
+            message(ucfirst($_POST['staffName']) . ' ' . $lang['updated'],'succsess');
+        } else message($lang['expired'],'danger');
     }
     if (isset($_POST["viewPlayer"])) {
         if (formtoken::validateToken($_POST)) {
@@ -77,10 +77,10 @@ if ($result_of_query->num_rows > 0) {
 	
             $sql = "UPDATE `users` SET `permissions`='" . $userPerms . "' WHERE `user_id` ='" . $uId . "';";
             $result_of_query = $db_connection->query($sql);
-            message("Permissions Updated");
+            message("Permissions Updated",'succsess');
             session_destroy();
             session_start();
-        } else message($lang['expired']);
+        } else message($lang['expired'],'error');
     }
     ?>
     <div class="row">

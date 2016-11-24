@@ -118,7 +118,7 @@ if ($page == 'views/life/dashboard.php' && $settings['lifeVersion'] == 4) {
             data.addColumn('number', 'New Players');
             data.addRows([
                 <?php
-                    $sql = "SELECT DATE(`players`.`first_login`) AS `date`, COUNT(`players`.`uid`) AS `count` FROM `players` GROUP BY `date` ORDER BY `date` LIMIT 15";
+                    $sql = "SELECT DATE(`players`.`first_login`) AS `date`, COUNT(`players`.`uid`) AS `count` FROM `players` GROUP BY `date` ORDER BY `date` DESC LIMIT 7";
                     $result_of_query = $db_link->query($sql);
                     $total_records = mysqli_num_rows($result_of_query);
                     $i = 1;
@@ -139,7 +139,11 @@ if ($page == 'views/life/dashboard.php' && $settings['lifeVersion'] == 4) {
             var options = {
                 'title':'',
                 'width':document.getElementById('player_data_chart').offsetWidth,
-                'height':document.getElementById('player_data_chart').offsetheight
+                'height':document.getElementById('player_data_chart').offsetheight,
+                vAxis: {
+                  title: 'Datum',
+                  direction: '-1'
+                }
             };
 
             // Instantiate and draw our chart, passing in some options.

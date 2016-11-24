@@ -373,7 +373,7 @@ if (file_exists('config/settings.php')) {
                     if (password_verify($_POST['passTest'], $pass)) {
                         $_SESSION['sudo'] = time();
                     } else {
-                        message($lang['incorrectPass']);
+                        message($lang['incorrectPass'],"danger");
                     }
                 }
                 if ($_SESSION['sudo'] + 10800 < time()) {

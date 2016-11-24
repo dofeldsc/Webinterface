@@ -166,12 +166,12 @@ function logAction($user, $action, $level)
     }
 }
 
-function message($text)
+function message($text, $type = "info")
 {
     echo "<br><div class='row'><div class='col-lg-12'>";
-    echo "<div class='alert alert-danger alert-dismissable'>";
+    echo "<div class='alert alert-". $type ." alert-dismissable'>";
     echo "<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>";
-    echo "<i class='fa fa-info-circle'></i> " . $text . "</div></div></div>";
+    echo "<i class='fa fa-info-circle'></i>" . $text . "</div></div></div>";
 }
 
 function error($errno, $errstr, $errfile, $errline)
@@ -237,6 +237,19 @@ function errorMessage($code, $lang)
         case 383:
             return $lang['no'] . ' ' . $lang['police'] . ' ' . $lang['gear']; //No Police Licenses
     }
+}
+
+function fetchGang($playerID,$db_link,$settings)
+{
+    $sql = 'SELECT `id`,`name` FROM gang_system WHERE `members` LIKE "%'. $playerID .'%";';
+    $gang = $db_link->query($sql);
+    if ($gang->num_rows > 0) {
+        $gang = $gang->fetch_object();
+        $html = '<a href="'. $settings . 'editGang/' . $gang->id .'"><strong>'. $gang->name .'</strong></a>';
+    } else {
+        $html = 'Keine Gang';
+    }
+    return $html;
 }
 
 function random($length)

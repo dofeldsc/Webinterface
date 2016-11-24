@@ -6,9 +6,9 @@ if (isset($_POST['db_type']) && isset($_POST['SQL_host']) && isset($_POST['SQL_u
         $sql = "INSERT INTO `db` (`type`, `sql_host`, `sql_user`, `sql_pass`, `sql_name`) VALUES ('" . $db_type . "', '" . encrypt($_POST['SQL_host']) . "', '" . encrypt($_POST['SQL_user']) . "', '" . encrypt($_POST['SQL_pass']) . "', '" . encrypt($_POST['SQL_name']) . "');";
         $result_of_query = $db_connection->query($sql);
     
-        message($lang['newdb']);
+        message($lang['newdb'],'success');
     } else {
-        message($lang['expired']);
+        message($lang['expired'], 'danger');
     }
     }
 ?>

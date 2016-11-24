@@ -22,5 +22,5 @@ if ($settings['version'] < 0.4) {
     $updated = true;
 }
 if (isset($updated)) {
-    message('Updated :)');
+    message('Updated :)','success');
 }

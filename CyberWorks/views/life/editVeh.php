@@ -14,7 +14,7 @@ if (isset($_POST["editType"])) {
                     $vehInv = $_POST["vehInv"];
                     $sql = "UPDATE `vehicles` SET `inventory`='" . $vehInv . "' WHERE `vehicles`.`id` = '" . $vehID . "'";
                     $result_of_query = $db_link->query($sql);
-                    message($lang['vehicle'] . ' ' . $lang['edited']);
+                    message($lang['vehicle'] . ' ' . $lang['edited'], "info");
                     $sql = "SELECT `pid`,`classname` FROM `vehicles` WHERE `id` ='" . $vehID . "';";
                     $result_of_query = $db_link->query($sql);
                     $vehTemp = $result_of_query->fetch_object();
@@ -24,7 +24,7 @@ if (isset($_POST["editType"])) {
                 case "veh_store":
                     $sql = "UPDATE `vehicles` SET `alive`='1',`active`='0' WHERE `vehicles`.`id` = '" . $vehID . "'";
                     $result_of_query = $db_link->query($sql);
-                    message($lang['vehicle'] . ' stored');
+                    message($lang['vehicle'] . ' stored', "info");
                     $sql = "SELECT `pid`,`classname` FROM `vehicles` WHERE `id` ='" . $vehID . "';";
                     $result_of_query = $db_link->query($sql);
                     $vehTemp = $result_of_query->fetch_object();
@@ -40,7 +40,7 @@ if (isset($_POST["editType"])) {
 
                     $sql = "DELETE FROM `vehicles` WHERE `vehicles`.`id` = '" . $vehID . "'";
                     $result_of_query = $db_link->query($sql);
-                    message($lang['vehicle'] . ' ' . $lang['deleted']);
+                    message($lang['vehicle'] . ' ' . $lang['deleted'], "info");
                     break;
 
                 case "veh_edit":
@@ -52,7 +52,7 @@ if (isset($_POST["editType"])) {
                     $sql = "UPDATE `vehicles` SET `side`='" . $vehSide . "',`type`='" . $vehType . "',`color`='" . $vehCol . "' WHERE `vehicles`.`id` = '" . $vehID . "'";
                     $result_of_query = $db_link->query($sql);
 
-                    message($lang['vehicle'] . ' ' . $lang['edited']);
+                    message($lang['vehicle'] . ' ' . $lang['edited'], "info");
 
                     $sql = "SELECT `pid`, `classname` FROM `vehicles` WHERE `id` ='" . $vehID . "';";
                     $result_of_query = $db_link->query($sql);
@@ -61,7 +61,7 @@ if (isset($_POST["editType"])) {
                     break;
             }
         } else {
-            message($lang['expired']);
+            message($lang['expired'], "danger");
         }
     }
 }

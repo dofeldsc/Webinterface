@@ -35,9 +35,9 @@ if (isset($_POST['server_name']) && isset($_POST['server_type']) && isset($_POST
         }
 
         $result_of_query = $db_connection->query($sql);
-        message("Added New Server!");
+        message("Added New Server!","success");
     } else {
-        message($lang['expired']);
+        message($lang['expired',"danger"]);
     }
     }
 ?>
