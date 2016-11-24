@@ -98,7 +98,7 @@ $columns = array(
         'dt'        => 8,
         'formatter' => function( $d, $row ) {
             if ($d) {
-                return '<span class="label label-danger">Verkauft</span>';
+                return '<span class="label label-danger">Verkauft '.date("d.m.Y H:i", strtotime($d)).'</span>';
             } else {
                 return '<span class="label label-success">Nein</span>';
             }

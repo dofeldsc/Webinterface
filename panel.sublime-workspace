@@ -1,0 +1,543 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"_r",
+				"_rad"
+			],
+			[
+				"getPlay",
+				"getPlayerUID"
+			],
+			[
+				"if",
+				"if\tif exitWith"
+			],
+			[
+				"_",
+				"_house"
+			],
+			[
+				"_h",
+				"_houses"
+			],
+			[
+				"life_",
+				"life_houses"
+			],
+			[
+				"_hou",
+				"_house"
+			],
+			[
+				"_co",
+				"_containerData"
+			],
+			[
+				"isEq",
+				"isEqualType"
+			],
+			[
+				"_q",
+				"_queryResult"
+			],
+			[
+				"sideN",
+				"sideUnknown"
+			],
+			[
+				"_nu",
+				"_numberText"
+			],
+			[
+				"_quer",
+				"_queryResult"
+			],
+			[
+				"param",
+				"params\tparams"
+			],
+			[
+				"par",
+				"params\tparams"
+			],
+			[
+				"for",
+				"for\tfrom 0 to XX do"
+			],
+			[
+				"f",
+				"for\tconfig do"
+			],
+			[
+				"para",
+				"params\tDoes sth. greate"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/C/xampp/htdocs/acp/templates/tabledata/vehicles.php",
+			"settings":
+			{
+				"buffer_size": 4671,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/xampp/htdocs/acp/templates/content/onlineplayers.php",
+			"settings":
+			{
+				"buffer_size": 3811,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 127.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"side",
+				"View: Toggle Side Bar"
+			],
+			[
+				"",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"sqf",
+				"Set Syntax: SQF"
+			],
+			[
+				"instp",
+				"Package Control: Install Package"
+			],
+			[
+				"Snippet: ",
+				"Snippet: if else"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+	],
+	"file_history":
+	[
+		"/C/xampp/htdocs/acp/templates/content/vehicles.php",
+		"/C/Users/pspat/Documents/Panel/Adminpanel/login.php",
+		"/C/Users/pspat/Documents/DE100/Altis_Life.Altis/core/housing/fn_handleWeaponTransfer.sqf",
+		"/C/Users/pspat/Documents/DE100/Altis_Life.Altis/core/functions/fn_notification_system.sqf",
+		"/C/Users/pspat/Documents/DE100/Altis_Life.Altis/core/functions/fn_pickupspamschutz.sqf",
+		"/C/Users/pspat/Documents/DE100/Altis_Life.Altis/core/functions/fn_emptyfuel.sqf",
+		"/C/Users/pspat/Documents/DE100/Altis_Life.Altis/core/functions/fn_actionKeyHandler.sqf",
+		"/C/Users/pspat/Documents/DE100/Altis_Life.Altis/script_macros.hpp",
+		"/C/Users/pspat/Documents/DE100/Altis_Life.Altis/cfgs/cfg_Master.hpp",
+		"/C/Users/pspat/Documents/DE100/Altis_Life.Altis/core/functions/fn_isUIDActive.sqf",
+		"/C/Users/pspat/Documents/DE100/Altis_Life.Altis/core/functions/fn_nearUnits.sqf",
+		"/C/Users/pspat/Documents/DE100/Altis_Life.Altis/cfgs/cfg_Functions.hpp",
+		"/C/Users/pspat/Documents/DE100/Altis_Life.Altis/core/functions/fn_name.sqf",
+		"/C/Users/pspat/Documents/DE100/Altis_Life.Altis/core/functions/fn_licenseInfo.sqf",
+		"/C/Users/pspat/Documents/DE100/Altis_Life.Altis/core/session/fn_requestReceived.sqf",
+		"/C/Users/pspat/Documents/DE100/@life_server/addons/life_hc/functions/Housing/fn_fetchPlayerHouses.sqf",
+		"/C/Users/pspat/Documents/DE100/@life_server/addons/life_hc/functions/MySQL/fn_queryRequest.sqf",
+		"/C/Users/pspat/Documents/DE100/Altis_Life.Altis/core/housing/fn_newHousingMenu.sqf",
+		"/C/Users/pspat/Documents/DE100/Altis_Life.Altis/dialog/virt_houseMenu.hpp",
+		"/C/Users/pspat/Documents/DE100/Altis_Life.Altis/dialog/function/fn_spawnPointCfg.sqf",
+		"/C/Users/pspat/Documents/DE100/Altis_Life.Altis/core/housing/fn_sellHouse.sqf",
+		"/C/Users/pspat/Documents/DE100/Altis_Life.Altis/core/housing/fn_initHouses.sqf",
+		"/C/Users/pspat/Documents/DE100/Altis_Life.Altis/core/housing/fn_buyHouse.sqf",
+		"/C/Users/pspat/Documents/DE100/@life_server/addons/life_hc/functions/MySQL/fn_numberSafe.sqf",
+		"/C/Users/pspat/Documents/DE100/@life_server/addons/life_hc/functions/MySQL/fn_mresToArray_safer.sqf",
+		"/C/Users/pspat/Documents/DE100/@life_server/addons/life_hc/functions/MySQL/fn_mresString.sqf",
+		"/C/Users/pspat/Documents/DE100/@life_server/addons/life_hc/functions/MySQL/fn_insertRequest.sqf",
+		"/C/Users/pspat/Documents/DE100/@life_server/addons/life_hc/functions/MySQL/fn_bool.sqf",
+		"/C/Users/pspat/Documents/DE100/@life_server/addons/life_hc/functions/Housing/fn_addHouse.sqf",
+		"/C/Users/pspat/Documents/DE100/@life_server/addons/life_hc/functions/General/fn_spikeStrip.sqf",
+		"/C/Users/pspat/Documents/DE100/test.sqf",
+		"/C/Users/pspat/Documents/DE100/Altis_Life.Altis/cfgs/cfg_Notifications.hpp",
+		"/C/Users/pspat/AppData/Roaming/Sublime Text 3/Installed Packages/SQF Language.sublime-package"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"or",
+			"mission",
+			"pickupspamschutz",
+			"medicPull",
+			"queryReq",
+			"append",
+			"newHousingMenu",
+			"life_houses",
+			"houses_",
+			"_containers",
+			"_unCompiledPos",
+			"slots",
+			"_new",
+			"_old",
+			"_returnCount",
+			"_ownerID",
+			"_side",
+			"BIS_fnc_param"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"||",
+			"_tmp",
+			"_owner"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/C/xampp/htdocs/acp/templates/tabledata/vehicles.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4671,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3831,
+								3831
+							]
+						],
+						"settings":
+						{
+							"c_time":
+							[
+								128,
+								3,
+								99,
+								100,
+								97,
+								116,
+								101,
+								116,
+								105,
+								109,
+								101,
+								10,
+								100,
+								97,
+								116,
+								101,
+								116,
+								105,
+								109,
+								101,
+								10,
+								113,
+								0,
+								67,
+								10,
+								7,
+								224,
+								11,
+								24,
+								19,
+								4,
+								53,
+								1,
+								63,
+								172,
+								113,
+								1,
+								133,
+								113,
+								2,
+								82,
+								113,
+								3,
+								46
+							],
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1397.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/C/xampp/htdocs/acp/templates/content/onlineplayers.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3811,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								535,
+								535
+							]
+						],
+						"settings":
+						{
+							"c_time":
+							[
+								128,
+								3,
+								99,
+								100,
+								97,
+								116,
+								101,
+								116,
+								105,
+								109,
+								101,
+								10,
+								100,
+								97,
+								116,
+								101,
+								116,
+								105,
+								109,
+								101,
+								10,
+								113,
+								0,
+								67,
+								10,
+								7,
+								224,
+								11,
+								24,
+								19,
+								4,
+								52,
+								13,
+								177,
+								189,
+								113,
+								1,
+								133,
+								113,
+								2,
+								82,
+								113,
+								3,
+								46
+							],
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "panel.sublime-project",
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"on",
+				"templates\\content\\onlineplayers.php"
+			],
+			[
+				"vehicles",
+				"templates\\tabledata\\vehicles.php"
+			],
+			[
+				"vehicl",
+				"templates\\content\\vehicles.php"
+			],
+			[
+				"handlewe",
+				"Altis_Life.Altis\\core\\housing\\fn_handleWeaponTransfer.sqf"
+			],
+			[
+				"scrmac",
+				"Altis_Life.Altis\\script_macros.hpp"
+			],
+			[
+				"cfgmas",
+				"Altis_Life.Altis\\cfgs\\cfg_Master.hpp"
+			],
+			[
+				"cfgfu",
+				"Altis_Life.Altis\\cfgs\\cfg_Functions.hpp"
+			],
+			[
+				"house",
+				"Altis_Life.Altis\\dialog\\virt_houseMenu.hpp"
+			],
+			[
+				"virth",
+				"Altis_Life.Altis\\dialog\\virt_houseMenu.hpp"
+			],
+			[
+				"reurec",
+				"Altis_Life.Altis\\core\\session\\fn_requestReceived.sqf"
+			],
+			[
+				"fetchplay",
+				"@life_server\\addons\\life_hc\\functions\\Housing\\fn_fetchPlayerHouses.sqf"
+			],
+			[
+				"notif",
+				"Altis_Life.Altis\\cfgs\\cfg_Notifications.hpp"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"C:\\Users\\pspat\\Documents\\de100Prj.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 275.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

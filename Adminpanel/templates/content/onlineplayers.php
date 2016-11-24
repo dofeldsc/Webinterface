@@ -14,7 +14,7 @@ $onlinePlayers = $rcon->getPlayersArray();
         <div class="col-xs-12">
             <div class="box box-info">
             <div class="box-header with-border">
-                <h3 class="box-title">Online Spieler (<?php echo count ($rcon->getPlayersArray()) ?>)</h3>
+                <h3 class="box-title">Online Spieler <t class="text-green"><?php echo count ($rcon->getPlayersArray()) ?></t>/151</h3>
             </div>
             <div class="box-body table-responsive">
                 <table id="OnlinePlayerList" class="table table-striped table-hover table-bordered">
