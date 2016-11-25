@@ -44,7 +44,7 @@
         
         $('.confirm-kick-btn').click(function() {
             if (!$('.reason-text-kick').val()) {
-                alert("Du musst einen Grund angeben.");
+                swal("Du musst einen Grund angeben.","", "error");
             } else {
                 var rconID =  $(this).attr('id');
                 var name =  $(this).attr('name');
@@ -54,9 +54,9 @@
         
         $('.confirm-tmpban-btn').click(function() {
             if (!$('#datepicker').val()) {
-                alert("Du musst ein Datum angeben.");
+                swal("Du musst ein Datum angeben.","", "error");
             } else if (!$('.reason-text-tmpban').val()) {
-                alert("Du musst einen Grund angeben.");
+                swal("Du musst einen Grund angeben.","", "error");
             } else {
                 var rconID =  $(this).attr('rconid');
                 var guid =  $(this).attr('guid');
@@ -74,7 +74,7 @@
         
         $('.confirm-ban-btn').click(function() {
             if (!$('.reason-text-ban').val()) {
-                alert("Du musst einen Grund angeben.");
+                swal("Du musst einen Grund angeben.","", "error");
             } else {
                 var rconID =  $(this).attr('rconid');
                 var guid =  $(this).attr('guid');

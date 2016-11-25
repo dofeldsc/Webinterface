@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"veh",
+				"vehicleData"
+			],
+			[
+				"ve",
+				"vehicleData"
+			],
+			[
 				"_r",
 				"_rad"
 			],
@@ -80,19 +88,37 @@
 	"buffers":
 	[
 		{
-			"file": "/C/xampp/htdocs/acp/templates/tabledata/vehicles.php",
+			"file": "/C/xampp/htdocs/acp/templates/content/editvehicle.php",
 			"settings":
 			{
-				"buffer_size": 4671,
+				"buffer_size": 3022,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/C/xampp/htdocs/acp/templates/content/onlineplayers.php",
+			"file": "/C/xampp/htdocs/acp/templates/content/editplayer.php",
 			"settings":
 			{
-				"buffer_size": 3811,
+				"buffer_size": 17365,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/xampp/htdocs/acp/templates/tabledata/vehicles.php",
+			"settings":
+			{
+				"buffer_size": 4631,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/xampp/htdocs/acp/includes/classes/Vehicle.php",
+			"settings":
+			{
+				"buffer_size": 2441,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -105,8 +131,8 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 127.0,
-		"last_filter": "",
+		"height": 311.0,
+		"last_filter": "side",
 		"selected_items":
 		[
 			[
@@ -134,7 +160,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 392.0
+		"width": 400.0
 	},
 	"console":
 	{
@@ -154,9 +180,22 @@
 	},
 	"expanded_folders":
 	[
+		"/C/xampp/htdocs/acp",
+		"/C/xampp/htdocs/acp/templates",
+		"/C/xampp/htdocs/acp/templates/tabledata"
 	],
 	"file_history":
 	[
+		"/C/xampp/htdocs/acp/templates/scripts/onlineplayers.php",
+		"/C/xampp/htdocs/acp/templates/scripts/editplayer.php",
+		"/C/xampp/htdocs/acp/templates/content/editplayer.php",
+		"/C/xampp/htdocs/acp/templates/scripts/vehicles.php",
+		"/C/xampp/htdocs/acp/templates/scripts/players.php",
+		"/C/xampp/htdocs/acp/templates/tabledata/players.php",
+		"/C/xampp/htdocs/acp/includes/db_config.php",
+		"/C/xampp/htdocs/acp/templates/content/onlineplayers.php",
+		"/C/xampp/htdocs/acp/templates/tabledata/vehicles.php",
+		"/C/xampp/htdocs/acp/templates/tabledata/onlineplayers.php",
 		"/C/xampp/htdocs/acp/templates/content/vehicles.php",
 		"/C/Users/pspat/Documents/Panel/Adminpanel/login.php",
 		"/C/Users/pspat/Documents/DE100/Altis_Life.Altis/core/housing/fn_handleWeaponTransfer.sqf",
@@ -193,7 +232,7 @@
 	],
 	"find":
 	{
-		"height": 34.0
+		"height": 46.0
 	},
 	"find_in_files":
 	{
@@ -208,6 +247,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			">\n",
+			"alert(\"Du musst einen Grund angeben.\");",
+			"alert",
 			"or",
 			"mission",
 			"pickupspamschutz",
@@ -233,6 +275,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"swal(\"Du musst einen Grund angeben.\", \"error\");",
 			"||",
 			"_tmp",
 			"_owner"
@@ -246,24 +289,182 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/C/xampp/htdocs/acp/templates/tabledata/vehicles.php",
+					"file": "/C/xampp/htdocs/acp/templates/content/editvehicle.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4671,
+						"buffer_size": 3022,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3831,
-								3831
+								2664,
+								2674
+							]
+						],
+						"settings":
+						{
+							"c_time":
+							[
+								128,
+								3,
+								99,
+								100,
+								97,
+								116,
+								101,
+								116,
+								105,
+								109,
+								101,
+								10,
+								100,
+								97,
+								116,
+								101,
+								116,
+								105,
+								109,
+								101,
+								10,
+								113,
+								0,
+								67,
+								10,
+								7,
+								224,
+								11,
+								24,
+								19,
+								4,
+								52,
+								13,
+								173,
+								208,
+								113,
+								1,
+								133,
+								113,
+								2,
+								82,
+								113,
+								3,
+								46
+							],
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 946.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 1,
+					"file": "/C/xampp/htdocs/acp/templates/content/editplayer.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 17365,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								623,
+								623
+							]
+						],
+						"settings":
+						{
+							"c_time":
+							[
+								128,
+								3,
+								99,
+								100,
+								97,
+								116,
+								101,
+								116,
+								105,
+								109,
+								101,
+								10,
+								100,
+								97,
+								116,
+								101,
+								116,
+								105,
+								109,
+								101,
+								10,
+								113,
+								0,
+								67,
+								10,
+								7,
+								224,
+								11,
+								24,
+								19,
+								4,
+								52,
+								13,
+								12,
+								166,
+								113,
+								1,
+								133,
+								113,
+								2,
+								82,
+								113,
+								3,
+								46
+							],
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 739.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/C/xampp/htdocs/acp/templates/tabledata/vehicles.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4631,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3709,
+								3515
 							]
 						],
 						"settings":
@@ -320,27 +521,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1397.0,
+						"translation.y": 1407.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "/C/xampp/htdocs/acp/templates/content/onlineplayers.php",
+					"buffer": 3,
+					"file": "/C/xampp/htdocs/acp/includes/classes/Vehicle.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3811,
+						"buffer_size": 2441,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								535,
-								535
+								768,
+								768
 							]
 						],
 						"settings":
@@ -379,9 +580,9 @@
 								19,
 								4,
 								52,
-								13,
-								177,
-								189,
+								9,
+								176,
+								161,
 								113,
 								1,
 								133,
@@ -400,7 +601,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -423,11 +624,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.5,
 			1.0
 		],
 		"rows":
@@ -445,7 +653,7 @@
 	"project": "panel.sublime-project",
 	"replace":
 	{
-		"height": 62.0
+		"height": 86.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -455,12 +663,40 @@
 		"selected_items":
 		[
 			[
-				"on",
-				"templates\\content\\onlineplayers.php"
+				"vehicle",
+				"includes\\classes\\Vehicle.php"
 			],
 			[
 				"vehicles",
 				"templates\\tabledata\\vehicles.php"
+			],
+			[
+				"editplayer",
+				"templates\\content\\editplayer.php"
+			],
+			[
+				"onlineplayers",
+				"templates\\scripts\\onlineplayers.php"
+			],
+			[
+				"players",
+				"templates\\scripts\\players.php"
+			],
+			[
+				"editplay",
+				"templates\\content\\editplayer.php"
+			],
+			[
+				"editvehicle",
+				"templates\\content\\editvehicle.php"
+			],
+			[
+				"dbc",
+				"includes\\db_config.php"
+			],
+			[
+				"on",
+				"templates\\content\\onlineplayers.php"
 			],
 			[
 				"vehicl",
@@ -534,7 +770,7 @@
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": true,
+	"side_bar_visible": false,
 	"side_bar_width": 275.0,
 	"status_bar_visible": true,
 	"template_settings":

@@ -4,7 +4,7 @@
             "pageLength": 25,
             "processing": true,
             "serverSide": true,
-            "responsive": true,
+            "responsive": false,
             "ajax": "../templates/tabledata/vehicles.php",
             "pagingType": "full_numbers",
             <?php if($user->hasPermision("VehicleEdit") || $user->hasPermision("VehicleReset")): ?>

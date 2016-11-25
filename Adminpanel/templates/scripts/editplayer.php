@@ -18,9 +18,9 @@
 
         $('.confirm-tmpban-btn').click(function() {
             if (!$('#datepicker').val()) {
-                alert("Du musst ein Datum angeben.");
+                swal("Du musst ein Datum angeben.","", "error");
             } else if (!$('.reason-text-tmpban').val()) {
-                alert("Du musst einen Grund angeben.");
+                swal("Du musst einen Grund angeben.","", "error");
             } else {
                 var rawDate = $('#datepicker').datetimepicker("getDate");
                 var year = addZero(rawDate.getFullYear());
@@ -36,7 +36,7 @@
         
         $('.confirm-ban-btn').click(function() {
             if (!$('.reason-text-ban').val()) {
-                alert("Du musst einen Grund angeben.");
+                swal("Du musst einen Grund angeben.","", "error");
             } else {
                 document.location.href = window.location.href + "&action=ban&reason=" + $(".reason-text-ban").val();
             }
