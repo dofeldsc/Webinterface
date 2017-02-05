@@ -22,16 +22,16 @@
                         <li><a href="#">Haaaaai</a></li>
                       </ul>
                 </li>
-                <?php if (!is_logged_in()): ?>
+                <?php if (!$user->isLoggedIn()): ?>
                 <li>
-                    <a href="/login.php">
+                    <a href="/login">
 						<i class="fa fa-sign-in"></i>
 						<p>Login</p>
                     </a>
                 </li>
                 <?php else: ?>
                 <li>
-                    <a href="/logout.php">
+                    <a href="/logout">
 						<i class="fa fa-sign-out"></i>
 						<p>Logout</p>
                     </a>

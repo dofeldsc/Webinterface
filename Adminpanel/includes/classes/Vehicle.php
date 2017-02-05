@@ -21,11 +21,15 @@ class Vehicle {
         return $db->getVar($query);
     }
     
-    public function resetVehicle($id)
+    public function resetVehicle($id,$adv=false)
     {
         global $db;
-
-        $query = $db->prepare("UPDATE `arma_main_server`.`vehicles` SET `alive`='1', `active`='0' WHERE `id`='$id'");
+        if ($adv) {
+            $query = $db->prepare("UPDATE `arma_main_server`.`vehicles` SET `alive`='1', `active`='0', `chopShop`=NULL WHERE `id`='$id'");
+        } else {
+            $query = $db->prepare("UPDATE `arma_main_server`.`vehicles` SET `alive`='1', `active`='0' WHERE `id`='$id'");
+        }
+        
         $newID = $db->update($query);
         if (!$newID) {
             add_message($db->getLastError(), MSG_TYPE_ERROR);
@@ -69,8 +73,8 @@ class Vehicle {
                 return "Polizei";
                 break;
                 
-            case 'med':
-                return "Sanitäter";
+            case 'thr':
+                return "THR";
                 break;
                
             case 'adac':
@@ -88,6 +92,15 @@ class Vehicle {
             return $ARMA_VEHICLES[$classname];
         } else {
             return $classname;
+        }
+    }
+
+    public static function getVehColor($veh,$color) {
+        global $ARMA_VEHICLE_COLORS;
+        if (isset($ARMA_VEHICLE_COLORS[$veh][$color])) {
+            return $ARMA_VEHICLE_COLORS[$veh][$color];
+        } else {
+            return "Arma3-Standart";
         }
     }
 }

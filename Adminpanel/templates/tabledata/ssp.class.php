@@ -230,7 +230,8 @@ class SSP {
 
         // IF Extra where set then set and prepare query
         if($extraWhere){
-            $extraWhere = ($where) ? ' AND '.$extraWhere : ' WHERE '.$extraWhere;
+            $extraWhereRaw = $extraWhere;
+            $extraWhere = ($where) ? 'AND '.$extraWhere : 'WHERE '.$extraWhere;
         }
         $groupBy = ($groupBy) ? ' GROUP BY '.$groupBy .' ' : '';
         // Main query to actually get the data
@@ -254,7 +255,7 @@ class SSP {
              $order
 			 $limit";
         }
-
+        
         $data = SSP::sql_exec( $db, $bindings,$query);
 
         // Data set length after filtering
@@ -269,6 +270,9 @@ class SSP {
           $count_request .= $joinQuery;
         } else {
           $count_request .= "FROM   `$table`";
+          if (isset ($extraWhereRaw)) {
+              $count_request .= "WHERE ".$extraWhereRaw;
+          }
         }
         $resTotalLength = SSP::sql_exec( $db,$count_request);
         $recordsTotal = $resTotalLength[0][0];
@@ -346,7 +350,7 @@ class SSP {
                 $stmt->bindValue( $binding['key'], $binding['val'], $binding['type'] );
             }
         }
-
+        //var_dump($stmt);
         // Execute
         try {
             $stmt->execute();

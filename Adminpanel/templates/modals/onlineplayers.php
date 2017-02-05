@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Kicken</h4>
+                <h4 class="modal-title"><i class="fa fa-ban"></i> Kicken</h4>
             </div>
             <div class="modal-body">
                 <div class="row">
@@ -30,7 +30,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Temporär bannen</h4>
+                <h4 class="modal-title"><i class="fa fa-clock-o"></i> Temporär bannen</h4>
             </div>
             <div class="modal-body">
                 <div class="row">
@@ -66,7 +66,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Permanent Bannen</h4>
+                <h4 class="modal-title"><i class="fa fa-gavel"></i> Permanent Bannen</h4>
             </div>
             <div class="modal-body">
                 <div class="row">
@@ -83,6 +83,22 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Abbrechen</button>
                 <button type="button" class="btn confirm-ban-btn btn-danger">Bannen</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="TransferData" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><i class="fa fa-exchange"></i> Daten werden übermittelt...</h4>
+            </div>
+            <div class="modal-body">
+                <div class="progress progress-xl">
+                  <div class="progress-bar progress-bar-success progress-bar-striped active" style="width:100%">
+                  </div>
+                </div>
             </div>
         </div>
     </div>

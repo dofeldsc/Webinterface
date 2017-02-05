@@ -5,7 +5,7 @@
 <div class="content-header">
     <h1>Spieler</h1>
     <ol class="breadcrumb">
-        <li><a href="<?php echo DE100_DOMAIN ;?>index.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="<?php echo DE100_DOMAIN ;?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li class="active">Spieler</li>
     </ol>
 </div>
@@ -26,9 +26,9 @@
                             <th>Kontostand</th>
                             <th>Admin</th>
                             <th>Polizist</th>
-                            <th>Sanitäter</th>
-                            <th>ADAC</th>
+                            <th>THR</th>
                             <th>Aliases</th>
+                            <th>Guid</th>
                             <?php if($user->hasPermision("PlayersEdit")): ?>
                             <th><i class="fa fa-pencil pull-right"></i></th>
                             <?php endif;?>

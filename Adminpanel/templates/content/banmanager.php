@@ -1,25 +1,11 @@
 <?php 
 $bans = $user->getBannedPlayers();
-
-function toData($number){
-    if ($number < 0) {
-        return "Permanent";
-    }
-    $number = str_split($number);
-    $year = implode(array_slice($number,0,4));
-    $month = implode(array_slice($number, 4,2));
-    $day = implode(array_slice($number,6,2));
-    $hr = implode(array_slice($number,8,2));
-    $min = implode(array_slice($number,10,2));
-    
-    return $day.".".$month.".".$year." ".$hr.":".$min." Uhr";
-}
 ?>
 
 <div class="content-header">
     <h1>Ban Manager</h1>
     <ol class="breadcrumb">
-        <li><a href="<?php echo DE100_DOMAIN ;?>index.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="<?php echo DE100_DOMAIN ;?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li class="active">Ban Manager</li>
     </ol>
 </div>
@@ -37,10 +23,11 @@ function toData($number){
                         <tr>
                             <th>Name</th>
                             <th>SpielerID</th>
+                            <th>Ban-Datum</th>
                             <th>Bis</th>
                             <?php if ($user->hasPermision("BanUnbanAll")){echo "<th>Von</th>";} ?>
                             <th>Grund</th>
-                            <th><i class="fa fa-wrench pull-right"></i><i class="fa fa-eraser pull-right"></i></th>
+                            <th><i class="fa fa-wrench pull-right"></i><?php if($user->hasPermision("BanTmp") || $user->hasPermision("BanPerm")):?><i class="fa fa-eraser pull-right"></i><?php endif;?></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -49,14 +36,17 @@ function toData($number){
                                 echo "<tr>";
                                 echo "<td>". $data['name'] ."</td>";
                                 echo "<td>". $data['playerid'] ."</td>";
-                                echo "<td>". toData($data['datum']) ."</td>";
+                                echo "<td>". ($data['insert_time']? date("d.m.Y H:i:s", strtotime($data['insert_time'])): "Keine Information") ."</td>";
+                                echo "<td>". toDate($data['datum']) ."</td>";
                                 if ($user->hasPermision("BanUnbanAll")) {
                                     echo "<td>". $data['von'] ."</td>";
                                 }
                                 echo "<td><a href='javascript:void(0)' reason='" . $data['grund']  . "' class='reason-btn'><i class='fa fa-eye' title='Grund'></i></a></td>";
                                 echo "<td>";
-                                echo "<a href='javascript:void(0)' banid='" . $data['id']  . "' class='edit-ban'><i class='fa fa-wrench pull-right' title='Bearbeiten'></i>";
-                                echo "<a href='javascript:void(0)' banid='" . $data['id']  . "' name='" . $data['name']  . "' class='unban'><i class='fa fa-eraser pull-right' title='Entbannen'></i>";
+                                if ($user->hasPermision("BanTmp") || $user->hasPermision("BanPerm")) {
+                                    echo "<a href='javascript:void(0)' reason='" . $data['grund']  . "' banid='" . $data['id']  . "' class='edit-ban'><i class='fa fa-wrench pull-right' title='Bearbeiten'></i>";
+                                }
+                                echo "<a href='javascript:void(0)' banid='" . $data['id']  . "' name='" . $data['name']  . "' playerid='" . $data['playerid']  . "' class='unban'><i class='fa fa-eraser pull-right' title='Entbannen'></i>";
                                 echo "</td>";
                                 echo "</tr>";
                             }

@@ -1,0 +1,53 @@
+img.editplayer {
+  display: block;
+  max-width:auto;
+  max-height:340px;
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+}
+#newPlayerChart {
+	min-height:  222px !important;
+	max-height:  588px !important;
+	height: auto !important;
+}
+canvas.stock_chart {
+	min-height:  222px !important;
+	max-height:  300px !important;
+	height: auto !important;
+}
+
+.ajs-message.ajs-custom { color: #31708f;  background-color: #d9edf7;  border-color: #31708f; }
+
+div span.notifNew {
+    position: relative;
+    top: -6px;
+    font-size: 10.5px;
+    padding: 2px 3px;
+    line-height: .9;
+}
+
+div h4 small.notifTime {
+
+}
+
+div h4.notifHeader {
+	margin: 0 0 0 0 !important;
+}
+div p.notifText {
+  color: #d4d4d4 !important;
+	margin: 0 0 0 0 !important;
+	font-size: 14px !important;
+	overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.navbar-custom-menu>.navbar-nav>li>.dropdown-menu.notif {
+  border-color: transparent;
+  background-color: transparent;
+}
+.navbar-nav>.messages-menu>.dropdown-menu>li.footer>a.notif {
+  border-bottom: 1px solid transparent;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}

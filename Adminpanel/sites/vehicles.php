@@ -6,15 +6,24 @@ $vehicle = new Vehicle();
 if (Input::get('action')) {
     switch(Input::get('action')){
         case 'reset':
-            //Permmision CHECK!! SINCE YOU CAN HACK THIS!
-            if (!$user->hasPermision("VehicleReset")) {
-                redirect(DE100_DOMAIN,"Was hast du den da Versucht ?",MSG_TYPE_ERROR);
+            if (!$user->hasPermision("VehicleReset") && !$user->hasPermision("VehicleResetAdv")) {
+                redirect(DE100_DOMAIN,"Dafür hast du nicht die Berechtigung",MSG_TYPE_ERROR);
             }
-			$vehicle->resetVehicle(Input::get('id'));
+            $uid = Player::PIDtoUID(Input::get('owner'));
+            if (Input::get('adv') == 'true') {
+                if (!$user->hasPermision("VehicleResetAdv")) {
+                    redirect(DE100_DOMAIN,"Dafür hast du nicht die Berechtigung",MSG_TYPE_ERROR);
+                }
+                $vehicle->resetVehicle(Input::get('id'),true);
+                Logger::addLog("vehEdit",$uid,"ChopShop-Reset ".Input::get('vehicle').", Kennzeichen: ".Input::get('plate'));
+            } else {
+                $vehicle->resetVehicle(Input::get('id'));
+                Logger::addLog("vehEdit",$uid,"Reset ".Input::get('vehicle').", Kennzeichen: ".Input::get('plate'));
+            }
             add_message("Das Fahrzeug wurde zurücksetzt", MSG_TYPE_SUCCESS);
             break;
     }
-    redirect(DIR_TO_SITES."vehicles.php");
+    redirect(DIR_TO_SITES."vehicles");
 }
 
 $DE100_GLOBALS['content'] = "vehicles";

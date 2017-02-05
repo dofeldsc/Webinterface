@@ -2,7 +2,7 @@
 
 // Site name
 if (!defined('DE100_SITE_VERSION'))
-    define('DE100_SITE_VERSION', '0.0.4');
+    define('DE100_SITE_VERSION', '0.1.1');
 
 
 // If true show errors
@@ -37,6 +37,9 @@ require_once(DIR_INCLUDES . 'db_config.php');
 // Classes path
 if (!defined('DIR_CLASSES'))
     define('DIR_CLASSES', DIR_INCLUDES . 'classes/');
+
+if (!defined('DIR_IMGS'))
+    define('DIR_IMGS', DIR_ROOT . 'assets/img/');
 
 // Functions path
 if (!defined('DIR_FUNCTIONS'))
@@ -86,6 +89,9 @@ if (!defined('USER_ROLE_ADMIN'))
     define('USER_ROLE_ADMIN', 3);
 
 
+if (!defined('STEAMAPIKEY'))
+    define('STEAMAPIKEY', "6C958B11A361DF9AF3EF4EDB01588BCB");
+
 // Login
 define('MAX_LOGIN_ATTEMPT', 5);
 define('MAX_LOGIN_ATTEMPT_PERIOD', 15 * 60); // 15 min
@@ -95,6 +101,9 @@ require_once(DIR_INCLUDES . 'arma_config.php');
 
 //Rechte
 require_once(DIR_INCLUDES . 'permissions.php');
+
+//logs
+require_once(DIR_INCLUDES . 'logs.php');
 
 $DE100_GLOBALS = [
     'layout' => 'layout',

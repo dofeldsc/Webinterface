@@ -145,6 +145,12 @@ function add_message($msg, $msg_type = MSG_TYPE_SUCCESS) {
     $_SESSION['message'][] = ['type' => $msg_type, 'message' => htmlentities($msg, ENT_QUOTES)];
 }
 
+function add_notify($msg, $msg_type = 'success', $timeout = 5) {
+    if (!isset($_SESSION['notifications']))
+        $_SESSION['notifications'] = [];
+    $_SESSION['notifications'][] = ['type' => $msg_type, 'timeout' => $timeout , 'message' => $msg];
+}
+
 /**
  * Advanced check if value is null or not
  */
@@ -186,21 +192,6 @@ function escape($string) {
 }
 
 function is_logged_in() {
-    /*global $db;
-
-    if (Session::exists('user')) {
-        print_r($_SESSION);
-        $userID = $_SESSION['user'];
-        $query = $db->prepare("SELECT id FROM users WHERE id=%d", $userID);
-        $row = $db->getRow($query);
-
-        if (!$row) {
-            $_SESSION['user'] = null;
-            unset($_SESSION['user']);
-            return false;
-        }
-        return $row['id'];
-    }*/
     $user = new User();
     return $user->isLoggedIn();
 }
@@ -232,7 +223,7 @@ function check_user_role($roleID, $userID = null) {
     global $db;
 
     if (!$userID)
-        redirect(DE100_DOMAIN."index.php", "Fehler beim lesen der Benutzerdaten", MSG_TYPE_ERROR);
+        redirect(DE100_DOMAIN, "Fehler beim lesen der Benutzerdaten", MSG_TYPE_ERROR);
     else {
         $query = $db->prepare("SELECT UA.role FROM users AS U LEFT JOIN user_roles AS UA ON UA.id = U.user_role WHERE U.id=%d", $userID);
         $userRole = $db->getVar($query);
@@ -244,35 +235,10 @@ function check_user_role($roleID, $userID = null) {
         return false;
 }
 
-function is_admin() {
-    $user = new User();
-    if (check_user_role(USER_ROLE_ADMIN, $user->data()['id']))
-        return true;
-        
-    return false;
-}
-
-function is_teacher() {
-    $user = new User();
-    // Return also for admin true...
-    if (check_user_role(USER_ROLE_MOD, $user->data()['id']) || check_user_role(USER_ROLE_ADMIN, $user->data()['id']))
-        return true;
-        
-    return false;
-}
-
-function is_student() {
-    $user = new User();
-    if (check_user_role(USER_ROLE_STUDENT, $user->data()['id']))
-        return true;
-    
-    return false;
-}
-
 function is_permitted() {
     if (is_student()) {
         add_message(MSG_NOT_PERMITTED, MSG_TYPE_ERROR);
-        redirect(DE100_DOMAIN."index.php");
+        redirect(DE100_DOMAIN);
     }
 }
 
@@ -285,6 +251,9 @@ function yesNo($number) {
 }
 
 function toPhpArray($input) {
+    if (!$input) {
+        return [];
+    }
     $input = str_replace("\"", "", $input);
     $input = str_replace("`", "\"", $input);
     $input = json_decode($input); 
@@ -292,25 +261,89 @@ function toPhpArray($input) {
 }
 
 function toArmaEscapedArray($input) {
-    $str = '"[';
+    $str = '[';
     $numItems = count($input);
     $i = 0;
     foreach ($input as $value) {
         if (++$i === $numItems) {
-            $str = $str.'[`'. $value[0] .'`,'. $value[1] .']';
+            if (is_array($value)) {
+                $str .= toArmaEscapedArray($value);
+            } else {
+                if (is_string($value)) {
+                    $str .= '`'.$value.'`';
+                } else {
+                    $str .= $value;
+                }
+            }
         } else {
-            $str = $str.'[`'. $value[0] .'`,'. $value[1] .'],';
+            if (is_array($value)) {
+                $str .= toArmaEscapedArray($value).',';
+            } else {
+                if (is_string($value)) {
+                    $str .= '`'.$value.'`,';
+                } else {
+                    $str .= $value.',';
+                }
+            }
         }
-        
     }
-    return $str.']"';
+    return $str.']';
 }
 
 function getPermissionName($var) {
     global $PERMISSIONS_CONFIG;
     if (isset($PERMISSIONS_CONFIG[$var])) {
-        return $PERMISSIONS_CONFIG[$var][1];
+        return $PERMISSIONS_CONFIG[$var];
     } else {
         return $var;
     }
+}
+
+function toDate($number){
+    if ($number < 0) {
+        return "Permanent";
+    }
+    $number = str_split($number);
+    $year = implode(array_slice($number,0,4));
+    $month = implode(array_slice($number, 4,2));
+    $day = implode(array_slice($number,6,2));
+    $hr = implode(array_slice($number,8,2));
+    $min = implode(array_slice($number,10,2));
+    
+    return $day.".".$month.".".$year." ".$hr.":".$min;
+}
+
+function make_links_clickable($text){
+    return preg_replace('!(((f|ht)tp(s)?://)[-a-zA-Zа-яА-Я()0-9@:%_+.~#?&;//=]+)!i', '<a href="$1" target="_blank">$1</a>', $text);
+}
+
+function formatBytes($bytes, $precision = 2) {
+    $unit = ["B", "KB", "MB", "GB"];
+    $exp = floor(log($bytes, 1024)) | 0;
+    return round($bytes / (pow(1024, $exp)), $precision).$unit[$exp];
+}
+
+
+function dateDifference($date_1)
+{
+    $datetime1 = date_create($date_1);
+    $datetime2 = date_create();
+    
+    $interval = date_diff($datetime1, $datetime2);
+    if ($interval->d > 0) {
+        $se = ($interval->d > 1) ? 'Tagen' : 'Tag';
+        return $interval->format('vor %d '.$se);
+    }
+
+    if ($interval->h > 0) {
+        $se = ($interval->h > 1) ? 'Stunden' : 'Stunde';
+        return $interval->format('vor %h Stunden');
+    }
+
+    if ($interval->i > 0) {
+        $se = ($interval->i > 1) ? 'Minuten' : 'Minute';
+        return $interval->format('vor %i Minuten');
+    }
+    return $interval->format('vor %s Sekunden');
+    
 }

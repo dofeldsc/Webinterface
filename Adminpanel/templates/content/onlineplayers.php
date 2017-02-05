@@ -1,11 +1,18 @@
 <?php 
-$onlinePlayers = $rcon->getPlayersArray();
+
+if (!$rcon->connected) {
+    $onlinePlayers = [];
+    $pc = '<t class="text-red">Keine Verbindung zum Server</t>';
+} else {
+    $onlinePlayers = $rcon->getPlayersArray();
+    $pc = 'Online Spieler <t class="text-green">'.count($onlinePlayers).'</t>/141';
+}
 ?>
 
 <div class="content-header">
     <h1>Online Spieler</h1>
     <ol class="breadcrumb">
-        <li><a href="<?php echo DE100_DOMAIN ;?>index.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="<?php echo DE100_DOMAIN ;?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li class="active">Online Spieler</li>
     </ol>
 </div>
@@ -14,7 +21,7 @@ $onlinePlayers = $rcon->getPlayersArray();
         <div class="col-xs-12">
             <div class="box box-info">
             <div class="box-header with-border">
-                <h3 class="box-title">Online Spieler <t class="text-green"><?php echo count ($rcon->getPlayersArray()) ?></t>/151</h3>
+                <h3 class="box-title"><?php echo $pc; ?></h3>
             </div>
             <div class="box-body table-responsive">
                 <table id="OnlinePlayerList" class="table table-striped table-hover table-bordered">
@@ -34,6 +41,9 @@ $onlinePlayers = $rcon->getPlayersArray();
                                 <?php endif; ?>
                                 <?php if ($user->hasPermision("BanKick")) :?>
                                 <i class="fa fa-ban pull-right"></i>
+                                <?php endif; ?>
+                                <?php if ($user->hasPermision("PlayersEdit")) :?>
+                                <i class="fa fa-pencil pull-right"></i>
                                 <?php endif; ?>
                             </th>
                             <?php endif; ?>
@@ -56,7 +66,10 @@ $onlinePlayers = $rcon->getPlayersArray();
                                         echo "<a href='javascript:void(0)' guid='". $data[3] ."' name='". $data[4] ."' rconid='". $data[0] ."' class='tempban-player'><i class='fa fa-clock-o pull-right' title='Temp-banen'></i>";
                                     }
                                     if ($user->hasPermision("BanKick")) {
-                                        echo "<a href='javascript:void(0)' id='". $data[0] ."' name='". $data[4] ."' class='kick-player'><i class='fa fa-ban pull-right' title='Kicken'></i>";
+                                        echo "<a href='javascript:void(0)' guid='". $data[3] ."' id='". $data[0] ."' name='". $data[4] ."' class='kick-player'><i class='fa fa-ban pull-right' title='Kicken'></i>";
+                                    }
+                                    if ($user->hasPermision("PlayersEdit")) {
+                                        echo "<a href='javascript:void(0)' guid='". $data[3] ."' class='show_player'><i class='fa fa-pencil pull-right' title='Bearbeiten'></i>";
                                     }
                                     echo "</td>";
                                 };

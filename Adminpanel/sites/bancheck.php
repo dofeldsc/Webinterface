@@ -1,19 +1,8 @@
 <?php
 require(dirname(dirname(__FILE__)) . '/includes/bootstrap.php');
 $baninfo = Player::banData(Input::get('id'));
-
-function toData($number){
-    if ($number < 0) {
-        return "Permanent";
-    }
-    $number = str_split($number);
-    $year = implode(array_slice($number,0,4));
-    $month = implode(array_slice($number, 4,2));
-    $day = implode(array_slice($number,6,2));
-    $hr = implode(array_slice($number,8,2));
-    $min = implode(array_slice($number,10,2));
-    
-    return $day.".".$month.".".$year." ".$hr.":".$min." Uhr";
+if (!$baninfo) {
+    redirect("https://www.de100-altis.life");
 }
 ?>
 <!DOCTYPE html>
@@ -83,7 +72,7 @@ text-decoration:underline;
                 <strong>Gebannt von:</strong><br>
                 <?php echo $baninfo['von']; ?><br><br>
                 <strong>Gebannt bis:</strong><br>
-                <?php echo toData($baninfo['datum']); ?><br><br>
+                <?php echo toDate($baninfo['datum']); ?><br><br>
                 <strong>Ban-Status:</strong><br>
                 <?php echo ($baninfo['status'] == 'true')? "<span class='text-red'>Gebannt</span>" : "<span class='text-green'>Entbannt</span>"; ?>
             </h4>

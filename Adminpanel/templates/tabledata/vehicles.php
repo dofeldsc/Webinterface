@@ -37,10 +37,11 @@ $columns = array(
             return Vehicle::getVehName($d);
         }
     ),
+    array('db' => '`v`.`plate`','field' => 'plate','dt' => 1),
     array(
         'db'        => '`v`.`type`',
         'field' 	=> 'type',
-        'dt'        => 1,
+        'dt'        => 2,
         'formatter' => function( $d, $row ) {
             return Vehicle::convertType($d);
         }
@@ -48,7 +49,7 @@ $columns = array(
     array(
         'db'        => '`v`.`side`',
         'field' 	=> 'side',
-        'dt'        => 2,
+        'dt'        => 3,
         'formatter' => function( $d, $row ) {
             return Vehicle::convertSide($d);
         }
@@ -56,7 +57,7 @@ $columns = array(
     array(
         'db'        => '`v`.`zeitpunkt`',
         'field'     => 'zeitpunkt',
-        'dt'        => 3,
+        'dt'        => 4,
         'formatter' => function( $d, $row ) {
             if ($d) {
                 return date("d.m.Y H:i", strtotime($d));
@@ -66,12 +67,12 @@ $columns = array(
             
         }
     ),
-    array( 'db' => '`p`.`name`', 'dt' => 4 ,'field' => 'name' ),
-    array( 'db' => '`p`.`playerid`', 'dt' => 5 ,'field' => 'playerid' ),
+    array( 'db' => '`p`.`name`', 'dt' => 5 ,'field' => 'name' ),
+    array( 'db' => '`p`.`playerid`', 'dt' => 6 ,'field' => 'playerid' ),
     array(
         'db'        => '`v`.`alive`',
         'field'     => 'alive',
-        'dt'        => 6,
+        'dt'        => 7,
         'formatter' => function( $d, $row ) {
             if ($d == 1) {
                 return '<span class="label label-success">Okay</span>';
@@ -83,7 +84,7 @@ $columns = array(
     array(
         'db'        => '`v`.`active`',
         'field'     => 'active',
-        'dt'        => 7,
+        'dt'        => 8,
         'formatter' => function( $d, $row ) {
             if ($d == 1) {
                 return '<span class="label label-danger">Ausgeparkt</span>';
@@ -95,7 +96,7 @@ $columns = array(
     array(
         'db'        => '`v`.`chopShop`',
         'field'     => 'chopShop',
-        'dt'        => 8,
+        'dt'        => 9,
         'formatter' => function( $d, $row ) {
             if ($d) {
                 return '<span class="label label-danger">Verkauft '.date("d.m.Y H:i", strtotime($d)).'</span>';
@@ -107,7 +108,7 @@ $columns = array(
     array(
         'db'        => '`v`.`fuel`',
         'field'     => 'fuel',
-        'dt'        => 9,
+        'dt'        => 10,
         'formatter' => function( $d, $row ) {
             if ($d >= .66) {
                 $c = "success";
@@ -122,7 +123,7 @@ $columns = array(
             </div>';
         }
     ),
-    array( 'db' => '`v`.`id`', 'dt' => 10 ,'field' => 'id' ),
+    array( 'db' => '`v`.`id`', 'dt' => 11 ,'field' => 'id' )
 );
  
 $joinQuery = "FROM `{$table}` AS `v` LEFT JOIN `players` AS `p` ON (`v`.`pid` = `p`.`playerid`)";

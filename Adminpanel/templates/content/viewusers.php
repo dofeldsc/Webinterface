@@ -5,7 +5,7 @@ $useres = $user->getAllUsers();
 <div class="content-header">
     <h1>Benutzer</h1>
     <ol class="breadcrumb">
-        <li><a href="<?php echo DE100_DOMAIN ;?>index.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="<?php echo DE100_DOMAIN ;?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li class="active">Benutzer</li>
     </ol>
 </div>
@@ -36,10 +36,10 @@ $useres = $user->getAllUsers();
                                 echo "<td>". $data['title'] ."</td>";
                                 if ($user->hasPermision("UserEdit")) {
                                     echo "<td>";
-                                    echo "<a href='" . DIR_TO_SITES . "edituser.php/?id=" . $data['id'] . "'><i class='fa fa-wrench pull-right' title='Bearbeiten'></i>";
+                                    echo "<a href='" . DIR_TO_SITES . "edituser?id=" . $data['id'] . "'><i class='fa fa-wrench pull-right' title='Bearbeiten'></i>";
                                     echo "</td>";
-                                    echo "</tr>";
                                 }
+                                echo "</tr>";
                             }
                         ?>
                     </tbody>

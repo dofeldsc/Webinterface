@@ -10,10 +10,12 @@
     $(document).ready(function() {
         $('#OnlinePlayerList tbody').on( 'click', '.kick-player', function () {
             var rconID = $(this).attr('id');
+            var guid = $(this).attr('guid');
             var playername = $(this).attr('name');
             
             $('#KickPlayerModal .Text').html("Spieler <strong>" + playername + "</strong> wirklich kicken?");
             document.getElementsByClassName('confirm-kick-btn')[0].setAttribute("id", rconID);
+            document.getElementsByClassName('confirm-kick-btn')[0].setAttribute("guid", guid);
             document.getElementsByClassName('confirm-kick-btn')[0].setAttribute("name", playername);
             $('#KickPlayerModal').modal();
         });
@@ -42,13 +44,22 @@
             $('#BanPlayerModal').modal();
         });
         
+        $('#OnlinePlayerList tbody').on( 'click', '.show_player', function () {
+            var guid = $(this).attr('guid');
+
+           window.open("<?php echo DIR_TO_SITES ;?>onlineplayers?guid="+ guid + "&action=show");
+        });
+
         $('.confirm-kick-btn').click(function() {
             if (!$('.reason-text-kick').val()) {
                 swal("Du musst einen Grund angeben.","", "error");
             } else {
+                var guid =  $(this).attr('guid');
                 var rconID =  $(this).attr('id');
                 var name =  $(this).attr('name');
-                document.location.href = "<?php echo DIR_TO_SITES ;?>onlineplayers.php/?id="+ rconID + "&name="+ name +"&action=kick&reason=" + $(".reason-text-kick").val();
+                $('#KickPlayerModal').modal('hide');
+                $('#TransferData').modal();
+                document.location.href = "<?php echo DIR_TO_SITES ;?>onlineplayers?id="+ rconID + "&guid="+ guid + "&name="+ name +"&action=kick&reason=" + $(".reason-text-kick").val();
             }
         });
         
@@ -61,14 +72,16 @@
                 var rconID =  $(this).attr('rconid');
                 var guid =  $(this).attr('guid');
                 var name =  $(this).attr('name');
-                var rawDate = $('#datepicker').datetimepicker("getDate");
+                var rawDate = new Date($('#datepicker').data("DateTimePicker").date());
                 var year = addZero(rawDate.getFullYear());
                 var month = addZero(rawDate.getMonth() + 1);
                 var day = addZero(rawDate.getDate());
                 var hr = addZero(rawDate.getHours());
                 var min = addZero(rawDate.getMinutes());
                 var date = year + month + day + hr + min;
-                document.location.href = "<?php echo DIR_TO_SITES ;?>onlineplayers.php/?rconid="+ rconID +"&guid="+ guid + "&name="+ name +"&action=tmpban&date=" + date +"&reason=" + $(".reason-text-tmpban").val();
+                $('#TempbanPlayerModal').modal('hide');
+                $('#TransferData').modal();
+                document.location.href = "<?php echo DIR_TO_SITES ;?>onlineplayers?rconid="+ rconID +"&guid="+ guid + "&name="+ name +"&action=tmpban&date=" + date +"&reason=" + $(".reason-text-tmpban").val();
             }
         });
         
@@ -80,20 +93,18 @@
                 var guid =  $(this).attr('guid');
                 var name =  $(this).attr('name');
 
-
-                document.location.href = "<?php echo DIR_TO_SITES ;?>onlineplayers.php/?rconid="+ rconID + "&guid="+ guid + "&name="+ name + "&action=ban&date=-1&reason=" + $(".reason-text-ban").val();
+                $('#BanPlayerModal').modal('hide');
+                $('#TransferData').modal();
+                document.location.href = "<?php echo DIR_TO_SITES ;?>onlineplayers?rconid="+ rconID + "&guid="+ guid + "&name="+ name + "&action=ban&date=-1&reason=" + $(".reason-text-ban").val();
             }
         });
-        
+                
         $('#datepicker').datetimepicker({
-            language: "de",
-            format: "dd.mm.yyyy hh:ii",
-            minView: 1,
-            autoclose: true,
-            useCurrent: false,
-            useDefault: false
+            format: 'DD.MM.YYYY HH:mm',
+            locale: 'de',
+            minDate: 'now'
         });
-        
+
         $('#OnlinePlayerList').DataTable({
             "pageLength": 25,
             "pagingType": "full_numbers",

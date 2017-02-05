@@ -5,8 +5,8 @@
 <div class="content-header">
     <h1>Fahrzeug</h1>
     <ol class="breadcrumb">
-        <li><a href="<?php echo DE100_DOMAIN ;?>index.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li><a href="<?php echo DIR_TO_SITES ;?>vehicles.php"> Fahrzeuge</a></li>
+        <li><a href="<?php echo DE100_DOMAIN ;?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="<?php echo DIR_TO_SITES ;?>vehicles"> Fahrzeuge</a></li>
         <li class="active">
             <?php echo $vehicleData["name"] . "'s " . $vehicle->getVehName($vehicleData["classname"])?>
         </li>
@@ -29,13 +29,19 @@
 							<b>Kennzeichen</b> <p class="pull-right"><?php echo $vehicleData["plate"] ?></p>
 						</li>
 						<li class="list-group-item">
-							<b>Farbe</b> <p class="pull-right"><?php echo $vehicleData["color"] ?></p>
+							<b>Fahrzeugart</b> <p class="pull-right"><?php echo Vehicle::convertType($vehicleData["type"]) ?></p>
+						</li>
+						<li class="list-group-item">
+							<b>Seite</b> <p class="pull-right"><?php echo Vehicle::convertSide($vehicleData["side"]) ?></p>
+						</li>
+						<li class="list-group-item">
+							<b>Farbe</b> <p class="pull-right"><?php echo $vehicle->getVehColor($vehicleData["classname"],$vehicleData["color"]) ?></p>
 						</li>
 						<li class="list-group-item">
 							<b>Kaufdatum</b> <p class="pull-right"><?php echo ($vehicleData['zeitpunkt'])? date("d.m.Y H:i", strtotime($vehicleData['zeitpunkt'])): "Keine Informationen" ?></p>
 						</li>
 						<li class="list-group-item">
-							<b>Besitzer</b> <a href="#" class="pull-right"><?php echo $vehicleData["name"] ?></a>
+							<b>Besitzer</b> <a href="<?php echo DIR_TO_SITES."editplayer?id=".$vehicleData['uid']; ?>" class="pull-right"><?php echo $vehicleData["name"] ?></a>
 						</li>
 						<li class="list-group-item">
 							<b>Zustand</b> <p class="pull-right"><?php echo ($vehicleData["alive"])? '<span class="label label-success">Okay</span>': '<span class="label label-danger">Zerstört</span>'; ?></p>
@@ -58,7 +64,7 @@
 					                $c = "danger";
 					            }
 								$f = $f * 100 . '%';
-								echo '<div class="col-xs-8 progress progress-md pull-right"><div class="progress-bar progress-bar-'.$c.' progress-bar-striped" style="width: '.$f.'"></div></div>'
+								echo '<p class="pull-right text-'.$c.'">'.$f.'</p>';
 							?>
 						</li>
 					</ul>

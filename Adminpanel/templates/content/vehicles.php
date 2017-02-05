@@ -4,7 +4,7 @@
 <div class="content-header">
     <h1>Fahrzeuge</h1>
     <ol class="breadcrumb">
-        <li><a href="<?php echo DE100_DOMAIN ;?>index.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="<?php echo DE100_DOMAIN ;?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li class="active">Fahrzeuge</li>
     </ol>
 </div>
@@ -20,6 +20,7 @@
                     <thead>
                         <tr>
                             <th>Fahrzeug</th>
+                            <th>Kennzeichen</th>
                             <th>Art</th>
                             <th>Seite</th>
                             <th>Kaufdatum</th>
@@ -29,12 +30,12 @@
                             <th>Garagen-Status</th>
                             <th>ChopShop-Status</th>
                             <th>Tank</th>
-                            <?php if($user->hasPermision("VehicleEdit") || $user->hasPermision("VehicleReset")): ?>
+                            <?php if($user->hasPermision("VehicleEdit") || $user->hasPermision("VehicleReset") || $user->hasPermision("VehicleResetAdv")):?>
                             <th>
                                 <?php if($user->hasPermision("VehicleEdit")): ?>
                                 <i class="fa fa-pencil pull-right"></i>
                                 <?php endif;?>
-                                <?php if($user->hasPermision("VehicleReset")): ?>
+                                <?php if($user->hasPermision("VehicleReset") || $user->hasPermision("VehicleResetAdv")): ?>
                                 <i class="fa fa-sign-in pull-right"></i>
                                 <?php endif;?>
                             </th>

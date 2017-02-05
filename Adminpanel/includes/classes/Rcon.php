@@ -53,6 +53,7 @@ class Rcon
      * @var string Head of the message, which was sent to the server
      */
     private $head;
+    public $connected = false;
 
     /**
      * Class constructor
@@ -122,7 +123,8 @@ class Rcon
         stream_set_timeout($this->socket, $this->options['timeoutSec']);
         stream_set_blocking($this->socket, true);
 
-        $this->authorize();
+        $this->connected = $this->authorize();
+        Session::put('server_status',$this->connected);
         $this->disconnected = false;
         
         if ($this->options['sendHeartbeat']) {
@@ -183,13 +185,16 @@ class Rcon
     {
         $sent = $this->writeToSocket($this->getLoginMessage());
         if ($sent === false) {
-            throw new \Exception('Failed to send login!');
+            add_notify("Es gab einen Fehler beim Versuch die Verbindung zum Server herzustellen.",'error',0);
+            return false;
         }
 
         $result = fread($this->socket, 16);
         if (@ord($result[strlen($result)-1]) == 0) {
-            throw new \Exception('Login failed, wrong password or wrong port!');
+            add_notify("Es gab einen Fehler beim Versuch die Verbindung zum Server herzustellen.",'error',0);
+            return false;
         }
+        return true;
     }
 
     /**
@@ -229,7 +234,8 @@ class Rcon
     protected function send($command)
     {
         if ($this->disconnected) {
-            throw new \Exception('Failed to send command, because the connection is closed!');
+            add_notify("Es gab einen Fehler beim Versuch die Verbindung zum Server herzustellen.",'error',0);
+            return false;
         }
         $msgCRC = $this->getMsgCRC($command);
         $head = 'BE'.chr(hexdec($msgCRC[0])).chr(hexdec($msgCRC[1])).chr(hexdec($msgCRC[2])).chr(hexdec($msgCRC[3])).chr(hexdec('ff')).chr(hexdec('01')).chr(hexdec(sprintf('%01b', 0)));

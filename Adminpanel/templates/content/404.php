@@ -15,7 +15,7 @@
 
           <p>
             Die Seite, nach der Du suchst, konnte nicht gefunden werden oder existiert noch nicht.<br>
-            <h3>Zum <a href="<?php echo DE100_DOMAIN ;?>index.php">Dashboard</a>.</h3>
+            <h3>Zum <a href="<?php echo DE100_DOMAIN ;?>">Dashboard</a>.</h3>
           </p>
 
         </div>

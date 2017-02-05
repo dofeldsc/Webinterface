@@ -46,9 +46,9 @@ $columns = array(
     ),
     array( 'db' => 'adminlevel',     'dt' => 4 ),
     array( 'db' => 'coplevel',     'dt' => 5 ),
-    array( 'db' => 'mediclevel',     'dt' => 6 ),
-    array( 'db' => 'life_job',     'dt' => 7 ),
-    array( 'db' => 'aliases',     'dt' => 8 ),
+    array( 'db' => 'thrlevel',     'dt' => 6 ),
+    array( 'db' => 'aliases',     'dt' => 7 ),
+    array( 'db' => 'guid',     'dt' => 8 ),
     array( 'db' => 'uid',     'dt' => 9 )
 
 );

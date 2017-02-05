@@ -6,4 +6,4 @@ $user->logout();
 
 session_destroy();
 
-redirect(DE100_DOMAIN."login.php");
+redirect(DE100_DOMAIN);

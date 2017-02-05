@@ -1,12 +1,10 @@
+$(document).ready(function () {
+    var sidebarVisible = localStorage.getItem('sidebar') == 'true'; // Get the value from localstorage
+    $('#sidebar').toggleClass('sidebar-collapse', sidebarVisible); // Add class true: add, false: don't add
 
-    if(localStorage.expandedMenu==0) {
-        $("body").addClass('sidebar-collapse');
-    }
-    
-    $('body').bind('expanded.pushMenu', function() {
-      localStorage.expandedMenu = 1;
+    $(".sidebar-toggle").on('click', function () {
+        sidebarVisible = !sidebarVisible;
+        localStorage.setItem('sidebar', sidebarVisible); // Save the visibility state in localstorage
+        $("#sidebar").toggleClass('clicked');
     });
-    
-    $('body').bind('collapsed.pushMenu', function() {
-      localStorage.expandedMenu = 0;
-    });
+});

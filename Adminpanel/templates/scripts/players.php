@@ -10,7 +10,7 @@
             "pagingType": "full_numbers",
             "columnDefs": [ 
             {
-                "targets": -2,
+                "targets": [-2,-3],
                 "visible": false
             }<?php if($user->hasPermision("PlayersEdit")): ?>,
             {
@@ -31,7 +31,7 @@
                 current_row = current_row.prev();
             }
             var data = playerlist.row(current_row).data();
-            document.location.href = "editplayer.php/?id="+data[9];
+            document.location.href = "editplayer?id="+data[9];
         });
     } );
 </script>

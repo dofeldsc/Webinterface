@@ -1,7 +1,7 @@
 <?php
     require(dirname(dirname(__FILE__)) . '/includes/bootstrap.php');
     $user = new User();
-    if (!$user->hasPermision("UserEdit")) {
+    if (!$user->hasPermision("UserEdit") || !$user->isLoggedIn()) {
         die();
     }
     $id = Input::get('id');
